@@ -1,19 +1,11 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-dotenv.config();
-import connectDB from "@/config/database";
+import express from 'express';
+import { errorHandler } from '@middlewares/errorHandler';
+import userRoutes from '@modules/user/routes/user.routes';
 
-import authRoutes from "@/routes/auth";
+const application = express();
 
-const app = express();
-const PORT = process.env.PORT || 5000;
+application.use(express.json());
+application.use("/api/users", userRoutes);
+application.use(errorHandler);
 
-connectDB();
-
-app.use(cors());
-app.use(express.json());
-app.use("/api/auth", authRoutes);
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+export default application;

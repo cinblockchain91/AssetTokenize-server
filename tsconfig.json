@@ -1,15 +1,20 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
-    "paths": {
-      "@/*": ["*"]
-    },
     "target": "ES2020",
     "module": "CommonJS",
-    "rootDir": "./src",
+    "moduleResolution": "node",
     "outDir": "./dist",
-    "esModuleInterop": true,
+    "rootDir": "./src",
+    "baseUrl": "./src",
+    "paths": {
+      "@config/*": ["config/*"],
+      "@modules/*": ["modules/*"],
+      "@core/*": ["core/*"],
+      "@middlewares/*": ["middlewares/*"],
+      "@utils/*": ["utils/*"]
+    },
     "strict": true,
+    "esModuleInterop": true,
     "skipLibCheck": true
   }
 }
